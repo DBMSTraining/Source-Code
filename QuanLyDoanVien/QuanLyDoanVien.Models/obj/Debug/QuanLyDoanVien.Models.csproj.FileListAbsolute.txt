@@ -1,0 +1,6 @@
+D:\DBMS\DOANCUOIKY\Source-Code\QuanLyDoanVien\QuanLyDoanVien.Models\bin\Debug\QuanLyDoanVien.Models.dll
+D:\DBMS\DOANCUOIKY\Source-Code\QuanLyDoanVien\QuanLyDoanVien.Models\bin\Debug\QuanLyDoanVien.Models.pdb
+D:\DBMS\DOANCUOIKY\Source-Code\QuanLyDoanVien\QuanLyDoanVien.Models\obj\Debug\QuanLyDoanVien.Models.csprojResolveAssemblyReference.cache
+D:\DBMS\DOANCUOIKY\Source-Code\QuanLyDoanVien\QuanLyDoanVien.Models\obj\Debug\QuanLyDoanVien.Models.csproj.CoreCompileInputs.cache
+D:\DBMS\DOANCUOIKY\Source-Code\QuanLyDoanVien\QuanLyDoanVien.Models\obj\Debug\QuanLyDoanVien.Models.dll
+D:\DBMS\DOANCUOIKY\Source-Code\QuanLyDoanVien\QuanLyDoanVien.Models\obj\Debug\QuanLyDoanVien.Models.pdb
