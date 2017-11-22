@@ -21,7 +21,7 @@ namespace QuanLyDoanVien.Models
 
         public int? NamSinh { get; set; }
 
-        public string GioiTinh { get; set; }
+        public bool GioiTinh { get; set; }
 
         public string DiaChi { get; set; }
 
@@ -36,6 +36,8 @@ namespace QuanLyDoanVien.Models
 
         [StringLength(10)]
         public string CMND { get; set; }
+        [StringLength(10)]
+        public string MaKhoa { get; set; }
 
         [StringLength(10)]
         public string MaChiDoan { get; set; }
@@ -47,5 +49,6 @@ namespace QuanLyDoanVien.Models
         public int? MaPhuongXa { get; set; }
 
         public string Hinh { get; set; }
+        public bool TinhTrangHD { get; set; }
     }
 }

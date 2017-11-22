@@ -1,0 +1,41 @@
+﻿@using QuanLyDoanVien.DAL
+@model QuanLyDoanVien.Models.TaiKhoanSinhVienModel
+
+
+@using (Html.BeginForm("ThayDoiMatKhau", "ThongTinCaNhanSinhVien", FormMethod.Post, new { @role = "form" }))
+{
+                @Html.AntiForgeryToken()
+    if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <label class="control-label">Mật Khẩu Hiện Tại</label>
+            @Html.TextBoxFor(model => model.MatKhauCu, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+
+        <div class="form-group">
+                <label class="control-label">Mật Khẩu Mới</label>
+                @Html.TextBoxFor(model => model.MatKhauCu, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Nhập Lại Khẩu</label>
+            <div class="col-md-10">
+               @Html.TextBoxFor(model => model.MatKhauCu, new { @class = "form-control" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model=>model.MaSinhVien)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cập Nhật" class="btn btn-default" />
+            </div>
+        </div>
+}

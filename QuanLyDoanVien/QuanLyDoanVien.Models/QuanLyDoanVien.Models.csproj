@@ -41,9 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CapHoatDongModel.cs" />
+    <Compile Include="ChiDoanModel.cs" />
+    <Compile Include="DanTocModel.cs" />
+    <Compile Include="DoanKhoaModel.cs" />
+    <Compile Include="HoatDongModel.cs" />
+    <Compile Include="HoatDongSinhVienModel.cs" />
+    <Compile Include="HoSoDoanModel.cs" />
     <Compile Include="LoginModel.cs" />
+    <Compile Include="PhuongXaModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuanHuyenModel.cs" />
     <Compile Include="SinhVienModel.cs" />
+    <Compile Include="TaiKhoanSinhVienModel.cs" />
+    <Compile Include="TinhThanhPhoModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

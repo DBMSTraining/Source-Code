@@ -1,0 +1,53 @@
+﻿@model IEnumerable<QuanLyDoanVien.Models.HoatDongSinhVienModel>
+
+@{
+    ViewBag.Title = "DanhSachHoatDongDangKi";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Mã Sinh Viên
+        </th>
+        <th>
+            Mã hoạt động
+        </th>
+        <th>
+            Điểm rèn luyện
+        </th>
+        <th>
+            Điểm CTXH
+        </th>
+        <th>Thao tác</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaSinhVien)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaHoatDong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiemRenLuyen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiemCTXH)
+        </td>
+        <td>
+            @Html.ActionLink("Thông Tin Chi Tiết", "ThongTinHoatDong", new { maHD = item.MaHoatDong}) |
+            @Html.ActionLink("Xóa Đăng Ký", "DeleteHoatDong", new { masv=item.MaSinhVien, mahd=item.MaHoatDong }, new { onclick = "return confirm('Bạn chắc chắn muốn xóa hoạt động này?');" })
+        </td>
+    </tr>
+}
+
+</table>

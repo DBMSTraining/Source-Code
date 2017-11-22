@@ -1,0 +1,55 @@
+﻿@model QuanLyDoanVien.Models.SinhVienModel
+@using QuanLyDoanVien.DAL
+
+@using (Html.BeginForm("CapNhatAnhDaiDien", "ThongTinCaNhanSinhVien", FormMethod.Post, new { @role = "form" }))
+{
+    @Html.AntiForgeryToken()
+        <div class="form-group">
+            <div class="fileinput fileinput-new" data-provides="fileinput">
+                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                </div>
+                <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                </div>
+                <div>
+                    <span class="btn default btn-file">
+                        <span class="fileinput-new">
+                            Select image
+                        </span>
+                        <span class="fileinput-exists">
+                            Change
+                        </span>
+                        <input type="file" name="...">
+                    </span>
+                    <a href="#" class="btn default fileinput-exists" data-dismiss="fileinput">
+                        Remove
+                    </a>
+                </div>
+            </div> 
+        </div>
+        <div class="margin-top-10">
+            <input type="submit" value="upload" />
+            @*@Html.ActionLink("Cập Nhật", "DoiAnhDaiDien", new { Link = Model.Hinh, @class="btn green-haze", @type="submit" })*@
+            <a href="#" class="btn default">
+                Cancel
+            </a>
+        </div>
+}
+
+@{  WebImage photo = null;
+    var newFileName = "";
+    var imagePath = "";
+
+    if (IsPost)
+    {
+        photo = WebImage.GetImageFromRequest();
+        if (photo != null)
+        {
+            newFileName = Guid.NewGuid().ToString() + "_" +
+                Path.GetFileName(photo.FileName);
+            imagePath = @"images\" + newFileName;
+
+            photo.Save(@"~\" + imagePath);
+        }
+    }
+}

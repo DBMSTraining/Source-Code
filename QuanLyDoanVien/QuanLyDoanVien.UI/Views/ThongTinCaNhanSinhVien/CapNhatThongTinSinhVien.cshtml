@@ -1,0 +1,114 @@
+﻿@model QuanLyDoanVien.Models.SinhVienModel
+@using QuanLyDoanVien.DAL
+
+@using (Html.BeginForm("CapNhatThongTinSinhVien", "ThongTinCaNhanSinhVien",FormMethod.Post, new { @role="form"}))
+{
+    @Html.AntiForgeryToken()
+    if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.Message
+        </div>
+    }
+        <div class="form-group">
+            <div class="form-group">
+                <label class="control-label">Mã Số Sinh Viên</label>
+                @Html.TextBoxFor(model=>model.MaSinhVien, new {@class="form-control", @readonly= "readonly"})
+            </div>
+            <label class="control-label">Họ Và Tên</label>
+            @Html.TextBoxFor(model => model.TenSinhVien, new { @class = "form-control"})
+        </div>
+        <div class="form-group">
+            <label class="control-label">Giới Tính: </label>
+            @Html.CheckBoxFor(model => model.GioiTinh, new { @class = "form-control"})
+        </div>
+        <div class="form-group">
+            <label class="control-label">Ngày Sinh: </label>
+            @Html.TextBoxFor(model => model.NgaySinh, new { @class = "form-group"})
+            <label class="control-label">Tháng Sinh: </label>
+            @Html.TextBoxFor(model => model.ThangSinh, new { @class = "form-group" })
+            <label class="control-label">Năm Sinh: </label>
+            @Html.TextBoxFor(model => model.NamSinh, new { @class = "form-group" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Đoàn Khoa</label>
+            @Html.DropDownListFor(model => model.MaKhoa, new SelectList(new ThongTinSinhVienDAL().DoanKhoa(), "MaKhoa", "TenKhoa"), new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Chi Đoàn</label>
+            @Html.DropDownListFor(model => model.MaChiDoan, new SelectList(new ThongTinSinhVienDAL().ChiDoan(), "MaChiDoan", "TenChiDoan"), new { @class = "form-control", @readonly = "readonly" })
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">Địa Chỉ</label>
+            @Html.TextBoxFor(model => model.DiaChi, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Dân Tộc</label>
+            @Html.DropDownListFor(model => model.MaDanToc, new SelectList(new ThongTinSinhVienDAL().DanToc(), "MaDanToc", "TenDanToc"), new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Tôn Giáo</label>
+           @Html.TextBoxFor(model => model.TonGiao, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Điện Thoại</label>
+            @Html.TextBoxFor(model => model.DienThoai, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">CMND</label>
+            @Html.TextBoxFor(model => model.CMND, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Email</label>
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Tỉnh/Thành Phố</label>
+            @Html.DropDownListFor(model => model.MaTinhThanhPho, new SelectList(new ThongTinSinhVienDAL().TinhThanhPho(), "MaTinh", "TenTinhThanhPho"), new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Quận/Huyện</label>
+            @Html.DropDownListFor(model => model.MaQuanHuyen, new SelectList(new ThongTinSinhVienDAL().QuanHuyen(), "MaQuanHuyen", "TenQuanHuyen"), new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Phường/Xã</label>
+            @Html.DropDownListFor(model => model.MaPhuongXa, new SelectList(new ThongTinSinhVienDAL().PhuongXa(), "MaPhuongXa", "TenPhuongXa"), new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Tình Trạng Hoạt Động</label>
+            @Html.CheckBoxFor(model => model.TinhTrangHD, new { @readonly = "readonly" }) Còn Hoạt Động
+        </div>
+        @*<form action="#" role="form">
+            <div class="form-group">
+                <div class="fileinput fileinput-new" data-provides="fileinput">
+                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;" id="picimgs">
+                        <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                    </div>
+                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;">
+                    </div>
+                    <div>
+                        <span class="btn default btn-file">
+                            <span class="fileinput-new">
+                                Select image
+                            </span>
+                            <span class="fileinput-exists">
+                                Change
+                            </span>
+                            <input type="file" name="...">
+                        </span>
+                        <a href="#" class="btn default fileinput-exists" data-dismiss="fileinput">
+                            Remove
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </form>*@
+        
+        <hr />
+        <div class="margin-top-10">
+            <input type="submit" class="btn green-haze" />
+        </div>
+}
+
+

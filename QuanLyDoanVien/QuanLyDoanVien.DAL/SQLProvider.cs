@@ -53,8 +53,8 @@ namespace QuanLyDoanVien.DAL
             message = "Unknown error";
             using (var conn = new SqlConnection(connectionString))
             {
-                try
-                {
+                //try
+                //{
                     conn.Open();
 
                     SqlCommand cmd = new SqlCommand(storedProcedureName, conn);
@@ -82,18 +82,38 @@ namespace QuanLyDoanVien.DAL
                     }
 
                     return false;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex);
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.WriteLine(ex);
+                //}
+                //finally
+                //{
+                //    conn.Close();
+                //}
             }
 
             return false;
         }
+
+        public DataSet ExecuteQueryDataSetWithPra(string strSQL, CommandType ct, params SqlParameter[] param)
+        {
+            var cnn = new SqlConnection(connectionString);
+            var unitCommand = new SqlCommand();
+            var dataAdapter = new SqlDataAdapter();
+            if (cnn.State == ConnectionState.Open)
+                cnn.Close();
+            cnn.Open();
+            unitCommand.CommandText = strSQL;
+            unitCommand.CommandType = ct;
+            unitCommand.Parameters.Clear();
+            foreach (SqlParameter p in param)
+                unitCommand.Parameters.Add(p);
+            dataAdapter = new SqlDataAdapter(unitCommand);
+            DataSet ds = new DataSet();
+            dataAdapter.Fill(ds);
+            return ds;
+        }
+
     }
 }

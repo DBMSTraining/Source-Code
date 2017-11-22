@@ -11,6 +11,8 @@ namespace QuanLyDoanVien.UI.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            var model = Session["USER_SESSION"];
+            ViewBag.NguoiDung = model;
             return View();
         }
     }

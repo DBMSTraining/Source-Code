@@ -11,7 +11,10 @@ namespace QuanLyDoanVien.UI.Commons
         public string UserName { get; set; }
         public string Password { get; set; }
         public string MaSinhVien { get; set; }
+        public string TenSinhVien { get; set; }
         public string MaChiDoan { get; set; }
+        public string TenChiDoan { get; set; }
         public string MaKhoa { get; set; }
+        public string TenKhoa { get; set; }
     }
 }

@@ -1,0 +1,7 @@
+﻿@model IEnumerable< QuanLyDoanVien.Models.DoanKhoaModel>
+
+<select>
+    @foreach (var ds in Model) {
+        <option class="form-group" value="@Html.ValueFor(model=>ds.MaKhoa)">@Html.DisplayFor(model=>ds.TenKhoa)</option>
+    }
+</select>

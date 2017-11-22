@@ -12,7 +12,7 @@ namespace QuanLyDoanVien.DAL
         // login vao he thong bang tai khoan user
         public static LoginModel Login(LoginModel login)
         {
-            var data = Query("Sp_User", new Dictionary<string, object>
+            var data = Query("sp_user_login", new Dictionary<string, object>
             {
                 {"Activity","Login" },
                 {"UserName",login.UserName },
@@ -27,7 +27,6 @@ namespace QuanLyDoanVien.DAL
                     MaSinhVien = data.Rows[0]["MaSinhVien"] + string.Empty,
                     MaKhoa = data.Rows[0]["MaKhoa"] + string.Empty,
                     MaChiDoan = data.Rows[0]["MaChiDoan"] + string.Empty
-
                 };
             }
             return null;
@@ -55,12 +54,11 @@ namespace QuanLyDoanVien.DAL
         }
 
         // load thong tin cua user (sinh vien)
-        public static SinhVienModel LoadProfile(string mssv = "15110347")
+        public static SinhVienModel LoadProfile(string mssv)
         {
-            var data = Query("Sp_Profile", new Dictionary<string, object>
+            var data = Query("sp_Profile_User", new Dictionary<string, object>
             {
-                {"Activity","LoadInfo" },
-                {"MaSinhVien",mssv }
+                {"MaSinhVien",mssv.Trim() }
             });
             if (data != null && data.Rows.Count > 0)
             {
@@ -71,7 +69,7 @@ namespace QuanLyDoanVien.DAL
                     NgaySinh = int.Parse(data.Rows[0]["NgaySinh"] + string.Empty),
                     ThangSinh = int.Parse(data.Rows[0]["ThangSinh"] + string.Empty),
                     NamSinh = int.Parse(data.Rows[0]["NamSinh"] + string.Empty),
-                    GioiTinh = bool.Parse(data.Rows[0]["GioiTinh"] + string.Empty) ? "Nam" : "Nữ",
+                    GioiTinh = bool.Parse(data.Rows[0]["GioiTinh"] + string.Empty) ,
                     DiaChi = data.Rows[0]["DiaChi"] + string.Empty,
                     MaDanToc = int.Parse(data.Rows[0]["MaDanToc"] + string.Empty),
                     TonGiao = data.Rows[0]["TonGiao"] + string.Empty,

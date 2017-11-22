@@ -1,0 +1,178 @@
+﻿@using QuanLyDoanVien.DAL
+@model QuanLyDoanVien.Models.SinhVienModel
+
+
+@{
+    ViewBag.Title = "ThongTinCaNhanSinhVien";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Message))
+{
+<div class="alert alert-danger" role="alert">
+    @ViewBag.Message
+</div>
+}
+<div class="row margin-top-20">
+    <div class="col-md-12">
+        <div class="profile-sidebar">
+            <div class="portlet light profile-sidebar-portlet">
+                <div class="profile-userpic">
+                    <img src="~/Assets/assets/admin/pages/media/profile/profile_user.jpg" class="img-responsive" alt="" width="200" height="200">
+                </div>
+
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name">
+                        @Html.DisplayFor(model=>model.TenSinhVien)
+                    </div>
+                </div>
+            </div>
+
+            <div class="portlet light">
+                <!-- STAT -->
+                <div class="row list-separated profile-stat">
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="uppercase profile-stat-title">
+                            37
+                        </div>
+                        <div class="uppercase profile-stat-text">
+                            Điểm rèn luyện
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="uppercase profile-stat-title">
+                            51
+                        </div>
+                        <div class="uppercase profile-stat-text">
+                            Điểm công tác xã hội
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6">
+                        <div class="uppercase profile-stat-title">
+                            61
+                        </div>
+                        <div class="uppercase profile-stat-text">
+                            Hoạt động đăng ký
+                        </div>
+                    </div>
+                </div>
+                <!-- END STAT -->
+            </div>
+
+        </div>
+
+        <div class="profile-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="portlet light">
+                        <div class="portlet-title tabbable-line">
+                            <div class="caption caption-md">
+                                <i class="icon-globe theme-font hide"></i>
+                                <span class="caption-subject font-blue-madison bold uppercase">Thông Tin Sinh Viên</span>
+                            </div>
+                            <ul class="nav nav-tabs">
+                                <li class="active">
+                                    <a href="#tab_1_1" data-toggle="tab">Thông Tin Cá Nhân</a>
+                                </li>
+                                <li>
+                                    <a href="#tab_1_2" data-toggle="tab">Cập Nhật Thông Tin Cá Nhân</a>
+                                </li>
+                                <li>
+                                    <a href="#tab_1_3" data-toggle="tab">Cập Nhật Hình Ảnh</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="tab-content">
+                                <!-- PERSONAL INFO TAB -->
+                                <div class="tab-pane active" id="tab_1_1">
+                                    <form role="form" action="#">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label class="control-label">Mã Số Sinh Viên</label>
+                                                <input type="text" placeholder="Doe" class="form-control" value="@Html.DisplayFor(model=>model.MaSinhVien)" disabled="true" />
+                                            </div>
+                                            <label class="control-label">Họ Và Tên</label>
+                                            <input type="text" placeholder="John" class="form-control" value="@Html.DisplayFor(model=>model.TenSinhVien)" disabled="true" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Giới Tính: </label>
+                                            @Html.CheckBoxFor(model => model.GioiTinh, new { @disabled = "true" }) Nam
+                                            @*<input type="checkbox" class="form-control" value="1"   disabled="true"  /> Nam*@ 
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Ngày Sinh: </label>
+                                            <input type="number" class="form-group" min="1" max="31" value="@Html.ValueFor(model=>model.NgaySinh)" disabled="true" />
+                                            <label class="control-label">Tháng Sinh: </label>
+                                            <input type="number" class="form-group" min="1" max="12" value="@Html.ValueFor(model=>model.ThangSinh)" disabled="true" />
+                                            <label class="control-label">Năm Sinh: </label>
+                                            <input type="number" class="form-group" min="1989" max="9999" value="@Html.ValueFor(model=>model.NamSinh)" disabled="true" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Đoàn Khoa</label>
+                                            @Html.DropDownListFor(model => model.MaKhoa, new SelectList(new ThongTinSinhVienDAL().DoanKhoa(), "MaKhoa", "TenKhoa"), new { @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Chi Đoàn</label>
+                                            @Html.DropDownListFor(model => model.MaChiDoan, new SelectList(new ThongTinSinhVienDAL().ChiDoan(), "MaChiDoan", "TenChiDoan"), new { @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="control-label">Địa Chỉ</label>
+                                            <input type="text" placeholder="Địa Chỉ" class="form-control" value="@Html.ValueFor(model=>model.DiaChi)" disabled="true" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Dân Tộc</label>
+                                            @Html.DropDownListFor(model => model.MaDanToc, new SelectList(new ThongTinSinhVienDAL().DanToc(), "MaDanToc", "TenDanToc"), new { @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Tôn Giáo</label>
+                                            <input type="text" placeholder="Địa Chỉ" class="form-control" value="@Html.ValueFor(model=>model.TonGiao)" disabled="true" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Điện Thoại</label>
+                                            <input type="text" placeholder="Địa Chỉ" class="form-control" value="@Html.ValueFor(model=>model.DienThoai)" disabled="true" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Email</label>
+                                            <input type="text" placeholder="Địa Chỉ" class="form-control" value="@Html.ValueFor(model=>model.Email)" disabled="true" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Tỉnh/Thành Phố</label>
+                                            @Html.DropDownListFor(model => model.MaTinhThanhPho, new SelectList(new ThongTinSinhVienDAL().TinhThanhPho(), "MaTinh", "TenTinhThanhPho"), new { @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Quận/Huyện</label>
+                                            @Html.DropDownListFor(model => model.MaQuanHuyen, new SelectList(new ThongTinSinhVienDAL().QuanHuyen(), "MaQuanHuyen", "TenQuanHuyen"), new { @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Phường/Xã</label>
+                                            @Html.DropDownListFor(model => model.MaPhuongXa, new SelectList(new ThongTinSinhVienDAL().PhuongXa(), "MaPhuongXa", "TenPhuongXa"), new { @class = "form-control", @readonly = "readonly" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label">Tình Trạng Hoạt Động</label>
+                                                @Html.CheckBoxFor(model => model.TinhTrangHD, new { @disabled = "true"}) Còn Hoạt Động
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- END PERSONAL INFO TAB -->
+                                <!-- CHANGE AVATAR TAB -->
+                                <div class="tab-pane" id="tab_1_2">
+                                    @Html.Partial("CapNhatThongTinSinhVien")
+                                </div>
+                                <!-- END CHANGE AVATAR TAB -->
+                                <!-- CHANGE PASSWORD TAB -->
+                                <div class="tab-pane" id="tab_1_3">
+                                    @Html.Partial("CapNhatAnhDaiDien")
+                                </div>
+                                <!-- END CHANGE PASSWORD TAB -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PROFILE CONTENT -->
+    </div>
+</div>
+

@@ -1,0 +1,108 @@
+﻿@model QuanLyDoanVien.Models.HoatDongModel
+
+@using QuanLyDoanVien.DAL
+@{
+    ViewBag.Title = "ThongTinHoatDong";
+    Layout = "~/Views/Shared/_LayoutStudent.cshtml";
+}
+
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet box red-sunglo">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-gift"></i>Thông Tin Hoạt Động
+                </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse">
+                    </a>
+                    <a href="javascript:;" class="reload">
+                    </a>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form action="#" class="form-horizontal form-bordered">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Mã Hoạt Động</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text" value = "@Html.DisplayFor(model=>model.MaHD)"    />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Tên Hoạt Động</label>
+                            <div class="col-md-9">
+                                <input class="form-control" type="text"  value="@Html.ValueFor(model=>model.TenHoatDong)" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Cấp Hoạt Động</label>
+                            <div class="col-md-9">
+                               @Html.DropDownListFor(model=>model.CapHoatDong, new SelectList(new HoatDongSinhVienDangKiDAL().CapHD(), "MaCap", "TenCap"), new { @class="form-control"})
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Ngày Bắt Đầu</label>
+                            <div class="col-md-9">
+                                <input class="form-control" value=" @Html.ValueFor(model=>model.NgayBatDau)"  type="text"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Ngày Kết Thúc</label>
+                            <div class="col-md-9">
+                                <input class="form-control" value=" @Html.ValueFor(model=>model.NgayKetThuc)"   type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Ngày Mở Đăng Ký</label>
+                            <div class="col-md-9"> 
+                                <input class="form-control" value=" @Html.ValueFor(model=>model.NgayMoDangky)"   type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Ngày Kết Thúc Đăng Ký</label>
+                            <div class="col-md-9">
+                                <input class="form-control" value=" @Html.ValueFor(model=>model.NgayKetThucDangKy)"  type="text"  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Số Lượng Sinh Viên</label>
+                            <div class="col-md-9">
+                                <input class="form-control" value=" @Html.ValueFor(model=>model.SoLuong)" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Điểm Rèn Luyện</label>
+                            <div class="col-md-9">
+                                <input class="form-control" value=" @Html.ValueFor(model=>model.DiemRenLuyen)" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Điểm CTXH</label>
+                            <div class="col-md-9">
+                                <input class="form-control" value=" @Html.ValueFor(model=>model.DiemCTXH)" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Nội Dung</label>
+                            <div class="col-md-9">
+                                <textarea class="form-control" rows="10" value=" @Html.ValueFor(model=>model.NoiDung)"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
+        </div>
+    </div>
+</div>
+
