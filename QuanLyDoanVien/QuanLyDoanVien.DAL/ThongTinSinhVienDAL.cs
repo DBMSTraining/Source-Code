@@ -13,7 +13,7 @@ namespace QuanLyDoanVien.DAL
     {
         public SinhVienModel ThongTinSinhVien(string masv)
         {
-            var data = Query("sp_ThongTinSinhVienTuView", new Dictionary<string, object>
+            var data = Query("sp_ThongTinCaNhanSinhVien", new Dictionary<string, object>
             {
                 { "MaSinhVien", masv }
             });
